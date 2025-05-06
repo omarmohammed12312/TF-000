@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1,
+h2 {
+  color: #444;
+}
+
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.thumbnail:hover {
+  border-color: #007bff;
+}
+
+#selected-image {
+  max-width: 300px;
+  max-height: 200px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+form {
+  margin-top: 10px;
+}
+
+input[type='number'] {
+  width: 80px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#upload-message,
+#resize-result {
+  margin-top: 10px;
+  font-weight: bold;
+}
