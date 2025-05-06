@@ -33,12 +33,10 @@ app.get('/api/resize', async (req: Request, res: Response) => {
   const height = parseInt(req.query.height as string);
 
   if (!filename || isNaN(width) || isNaN(height)) {
-    return res
-      .status(400)
-      .json({
-        error:
-          'Missing or invalid query parameters. Required: filename, width, height',
-      });
+    return res.status(400).json({
+      error:
+        'Missing or invalid query parameters. Required: filename, width, height',
+    });
   }
 
   // Check if the input image file exists
@@ -62,12 +60,10 @@ app.get('/api/resize', async (req: Request, res: Response) => {
     }
     res.sendFile(resizedImagePath);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        error: 'Error processing image',
-        details: error instanceof Error ? error.message : error,
-      });
+    res.status(500).json({
+      error: 'Error processing image',
+      details: error instanceof Error ? error.message : error,
+    });
   }
 });
 
@@ -120,19 +116,15 @@ if (!fs.existsSync(uploadDir)) {
 // Upload endpoint
 app.post('/api/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
-    return res
-      .status(400)
-      .json({
-        error:
-          'No file uploaded or invalid file type. Only .jpg files are allowed.',
-      });
-  }
-  res
-    .status(200)
-    .json({
-      message: 'File uploaded successfully',
-      filename: req.file.filename,
+    return res.status(400).json({
+      error:
+        'No file uploaded or invalid file type. Only .jpg files are allowed.',
     });
+  }
+  res.status(200).json({
+    message: 'File uploaded successfully',
+    filename: req.file.filename,
+  });
 });
 
 app.listen(port, () => {

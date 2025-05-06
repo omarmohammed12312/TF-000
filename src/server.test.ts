@@ -38,5 +38,4 @@ describe('API Endpoints', () => {
       .attach('image', Buffer.from('test'), 'test.png');
     expect(res.status).toBe(400);
   });
-
 });
