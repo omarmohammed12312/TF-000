@@ -1,26 +1,7 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-h1,
-h2 {
-  color: #444;
-}
-
-#gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
 .thumbnail {
   width: 150px;
-  height: 100px;
-  object-fit: cover;
+  height: auto;
+  margin: 5px;
   cursor: pointer;
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
@@ -31,36 +12,22 @@ h2 {
 }
 
 #selected-image {
-  max-width: 300px;
-  max-height: 200px;
+  max-width: 400px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
   display: block;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
-form {
-  margin-top: 10px;
-}
-
-input[type='number'] {
-  width: 80px;
-  margin-right: 10px;
-}
-
-button {
-  padding: 6px 12px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-#upload-message,
-#resize-result {
-  margin-top: 10px;
+.info-message {
+  color: green;
   font-weight: bold;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
 }

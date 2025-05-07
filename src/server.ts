@@ -127,7 +127,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(port, (): void => {
   console.log(`Server is running on http://localhost:${port}`);
   console.log(
     `Open your browser and go to http://localhost:${port}/frontend/index.html to access the frontend.`
