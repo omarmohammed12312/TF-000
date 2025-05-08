@@ -1,8 +1,5 @@
 import request from 'supertest';
 import { app } from './server';
-//import { resizeImage } from './imageProcessor';
-//import fs from 'fs';
-//import path from 'path';
 
 describe('API Endpoints', () => {
   it('GET /api/health should return status ok', async () => {

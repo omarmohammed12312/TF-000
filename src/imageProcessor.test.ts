@@ -1,6 +1,5 @@
 import { resizeImage } from './imageProcessor';
 import fs from 'fs';
-// import path from 'path';
 
 describe('resizeImage function', () => {
   const testImage = 'encenadaport.jpg';

@@ -79,7 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch('/api/upload', { method: 'POST', body: formData });
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
       if (response.ok) {
         const data = await response.json();
         uploadMessage.textContent = data.message;
@@ -112,15 +115,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      console.log('Sending resize request for', filename, 'with width', width, 'and height', height);
-      const response = await fetch('/api/resize?filename=' + encodeURIComponent(filename) + '&width=' + width + '&height=' + height);
+      console.log(
+        'Sending resize request for',
+        filename,
+        'with width',
+        width,
+        'and height',
+        height
+      );
+      const response = await fetch(
+        '/api/resize?filename=' +
+          encodeURIComponent(filename) +
+          '&width=' +
+          width +
+          '&height=' +
+          height
+      );
       if (response.ok) {
         const contentType = response.headers.get('content-type');
         if (contentType && contentType.includes('application/json')) {
           const data = await response.json();
           console.log('Resize response JSON:', data);
           if (data.path) {
-            resizeResult.innerHTML = '<img src="' + data.path + '?t=' + new Date().getTime() + '" alt="Resized Image" />';
+            resizeResult.innerHTML =
+              '<img src="' +
+              data.path +
+              '?t=' +
+              new Date().getTime() +
+              '" alt="Resized Image" />';
           } else if (data.message) {
             resizeResult.textContent = data.message;
             if (data.message === 'Photo already exists') {
@@ -135,7 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
-          resizeResult.innerHTML = '<img src="' + url + '" alt="Resized Image" />';
+          resizeResult.innerHTML =
+            '<img src="' + url + '" alt="Resized Image" />';
         }
       } else {
         resizeResult.textContent = 'Resize failed.';
