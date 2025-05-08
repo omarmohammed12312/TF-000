@@ -85,10 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadMessage.textContent = data.message;
         fileInput.value = '';
 
-        // Immediately add new image to the gallery
-        const newImg = createImageElement(`/uploads/${file.name}`, file.name);
-        newImg.addEventListener('click', () => selectImage(newImg.src, file.name));
-        gallery.appendChild(newImg);
+        // Reload gallery images after successful upload
+        await loadImages();
       } else {
         uploadMessage.textContent = 'Upload failed.';
       }
